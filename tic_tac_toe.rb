@@ -10,7 +10,7 @@ class Board
   attr_accessor :lines, :move_counter
 
   def initialize
-    @lines
+    @lines = ''
     @move_counter = 0
     send_board_to_players
   end
@@ -221,7 +221,7 @@ def play_turn(player1, player2, board)
   until (player1 || player2).won == true || Player.shared_tiles.length == 9
     player1.select_tile
     board.print_board
-    if Player.shared_tiles.length != 9
+    if (player1 || player2).won == true || Player.shared_tiles.length != 9
       player2.select_tile
       board.print_board
     end
